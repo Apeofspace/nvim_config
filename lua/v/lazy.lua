@@ -26,8 +26,6 @@ require("lazy").setup({
 	},
 	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 	{'mbbill/undotree'},
-	--{"tpope/vim-fugitive"},
-	
 	{'hrsh7th/cmp-nvim-lua'},
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
@@ -39,8 +37,8 @@ require("lazy").setup({
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
-	}
-	,
+	},
+--    {"rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"}},
 
 })
 
