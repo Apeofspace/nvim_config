@@ -26,7 +26,7 @@ require("lazy").setup({
 	},
 	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 	{'mbbill/undotree'},
-	{"tpope/vim-fugitive"},
+	--{"tpope/vim-fugitive"},
 	
 	{'hrsh7th/cmp-nvim-lua'},
 	{'williamboman/mason.nvim'},
