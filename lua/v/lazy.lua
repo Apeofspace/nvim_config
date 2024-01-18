@@ -38,15 +38,12 @@ require("lazy").setup({
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
---    {"rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"}},
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
+        },
+        lazy = false,
+    }
 
 })
-
---local plugins = {
---	{"nvim-lua/plenary.nvim"},
---	{
---		'nvim-telescope/telescope.nvim', tag = '0.1.5',
---		-- or                              , branch = '0.1.x',
---		dependencies = { 'nvim-lua/plenary.nvim' }
---	}
---}
