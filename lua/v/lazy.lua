@@ -44,6 +44,9 @@ require("lazy").setup({
             -- add any options here
         },
         lazy = false,
-    }
+    },
+    {'habamax/vim-rst',
+        lazy = true,
+    },
 
 })
