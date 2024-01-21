@@ -12,12 +12,34 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ 'rose-pine/neovim', 
-	name = 'rose-pine', 
+	-- { 'rose-pine/neovim', 
+	-- name = 'rose-pine', 
+	-- lazy=false,
+	-- config = function()
+	-- 	vim.cmd([[colorscheme rose-pine]])
+	-- end,
+ --    },
+	-- { 'sainnhe/sonokai', 
+ --    opts = {sonokai_style = 'atlantis'},
+	-- name = 'sonokai', 
+	-- lazy=false,
+	-- config = function()
+	-- 	vim.cmd([[colorscheme sonokai]])
+	-- end,},
+	{ 'sainnhe/everforest', 
+	name = 'everforest', 
 	lazy=false,
 	config = function()
-		vim.cmd([[colorscheme rose-pine]])
+        vim.cmd([[let g:everforest_background = 'hard']])
+		vim.cmd([[colorscheme everforest]])
 	end,},
+    -- {"rebelot/kanagawa.nvim",
+    --     name = 'kanagawa',
+    --     lazy = false,
+    --     config = function()
+    --         vim.cmd([[colorscheme kanagawa-dragon]])
+    --     end,
+    -- },
 	{"nvim-lua/plenary.nvim"},
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
