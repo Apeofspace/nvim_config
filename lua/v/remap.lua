@@ -14,3 +14,4 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set({"n", "v"}, "<C-s>", ":w<CR>")
+vim.keymap.set({"n", "v"}, "<leader>fc", ":noh<CR>")
