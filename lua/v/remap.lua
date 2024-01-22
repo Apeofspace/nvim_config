@@ -15,3 +15,7 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set({"n", "v"}, "<C-s>", ":w<CR>")
 vim.keymap.set({"n", "v"}, "<leader>fc", ":let @/ = \"\"<CR>")
+vim.keymap.set({"n", "v"}, "<C-h>", "<C-w>H")
+vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>J")
+vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>K")
+vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>L")
