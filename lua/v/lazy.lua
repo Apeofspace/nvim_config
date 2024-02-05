@@ -18,11 +18,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.cmd([[let g:vimspector_enable_mappings = 'HUMAN']])
 
 require("lazy").setup({
-    {'sainnhe/sonokai',
+    { 'sainnhe/sonokai',
+        name = 'sonokai',
         lazy=false,
         config = function()
-            -- vim.cmd([[set termguicolors]])
-            vim.cmd([[let g:sonokai_style = 'shusia']])
+            vim.cmd([[let g:sonokai_style ='shusia']])
+            vim.cmd([[set termguicolors]])
             vim.cmd([[colorscheme sonokai]])
         end,
     },
@@ -83,22 +84,5 @@ require("lazy").setup({
             })
         end
     }
-    -- {"kelly-lin/ranger.nvim",
-    --     config = function()
-    --         local ranger_nvim = require("ranger-nvim")
-    --         ranger_nvim.setup({
-    --             -- replace_netrw = true,
-    --             -- enable_cmds = false,
-    --             -- keybinds = {
-    --             --     ["<C-s>"] = ranger_nvim.OPEN_MODE.vsplit,
-    --             -- }
-    --         })
-    --         vim.api.nvim_set_keymap("n", "<leader>po", "", {
-    --             noremap = true,
-    --             callback = function()
-    --                 ranger_nvim.open(true)
-    --             end,
-    --         })
-    --     end,
-    -- }
 })
+
