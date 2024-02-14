@@ -73,14 +73,32 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     {"p00f/clangd_extensions.nvim"},
-    {"kevinhwang91/rnvimr",
+    -- {"kevinhwang91/rnvimr",
+    --     config = function()
+    --         vim.api.nvim_set_keymap("n", "<leader>po", "", {
+    --             noremap = true,
+    --             callback = function()
+    --                 vim.cmd([[RnvimrToggle]])
+    --             end,
+    --         })
+    --     end
+    -- }
+    {"kelly-lin/ranger.nvim",
         config = function()
+            local ranger_nvim = require("ranger-nvim")
+            ranger_nvim.setup({
+                replace_netrw = true,
+                -- enable_cmds = false,
+                -- keybinds = {
+                --     ["<C-s>"] = ranger_nvim.OPEN_MODE.vsplit,
+                -- }
+            })
             vim.api.nvim_set_keymap("n", "<leader>po", "", {
                 noremap = true,
                 callback = function()
-                    vim.cmd([[RnvimrToggle]])
+                    ranger_nvim.open(true)
                 end,
             })
-        end
+        end,
     }
 })
