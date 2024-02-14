@@ -11,44 +11,53 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 vim.opt.rtp:prepend(lazypath)
 vim.cmd([[let g:vimspector_enable_mappings = 'HUMAN']])
 
 require("lazy").setup({
-    -- {"kelly-lin/ranger.nvim",
-    --     config = function()
-    --         require("ranger-nvim").setup({ replace_netrw = true, enable_cmds = true })
-    --         vim.api.nvim_set_keymap("n", "<leader>pr", "",{
-    --             noremap = true,
-    --             callback = function()
-    --                 require("ranger-nvim").open(true)
-    --             end,
-    --         })
-    --     end,
-    -- },
-    { 'sainnhe/sonokai',
-        opts = {sonokai_style = 'atlantis'},
-        name = 'sonokai',
+    {'sainnhe/sonokai',
         lazy=false,
         config = function()
-            vim.cmd([[set termguicolors]])
+            -- vim.cmd([[set termguicolors]])
+            vim.cmd([[let g:sonokai_style = 'shusia']])
             vim.cmd([[colorscheme sonokai]])
         end,
     },
+    -- {"folke/tokyonight.nvim",
+    --     -- lazy = false,
+    --     config = function()
+    --         require("tokyonight").setup({
+    --             -- use the night style
+    --             style = "night",
+    --             -- disable italic for functions
+    --             -- styles = {
+    --             --     functions = {}
+    --             -- },
+    --             sidebars = { "qf", "vista_kind", "terminal", "packer" },
+    --             -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+    --             on_colors = function(colors)
+    --                 colors.hint = colors.orange
+    --                 colors.error = "#ff0000"
+    --             end
+    --         })
+    --         -- vim.cmd([[colorscheme tokyonight]])
+    --     end,},
     {"nvim-lua/plenary.nvim"},
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.5',
+    {'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'hrsh7th/nvim-cmp'},
     {'mbbill/undotree'},
     {'hrsh7th/cmp-nvim-lua'},
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
     {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
-    { "rafamadriz/friendly-snippets" },
     { "L3MON4D3/LuaSnip",
         dependencies = { "rafamadriz/friendly-snippets" },
     },
@@ -64,4 +73,14 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     {"p00f/clangd_extensions.nvim"},
+    {"kevinhwang91/rnvimr",
+        config = function()
+            vim.api.nvim_set_keymap("n", "<leader>po", "", {
+                noremap = true,
+                callback = function()
+                    vim.cmd([[RnvimrToggle]])
+                end,
+            })
+        end
+    }
 })

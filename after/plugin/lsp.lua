@@ -15,7 +15,7 @@ require('mason-lspconfig').setup({
             require('lspconfig').clangd.setup({
                 cmd = {
                 "clangd",
-                '--query-driver=/usr/bin/arm-none-eabi-gcc',
+                '--query-driver=arm-none-eabi-gcc',
         },
             })
         end,
