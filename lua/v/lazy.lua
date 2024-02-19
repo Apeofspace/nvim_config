@@ -75,7 +75,7 @@ require("lazy").setup({
     {"p00f/clangd_extensions.nvim"},
     {"kevinhwang91/rnvimr",
         config = function()
-            vim.cmd([[let g:rnvimr_vanilla = 1]])
+            -- vim.cmd([[let g:rnvimr_vanilla = 1]])
             vim.api.nvim_set_keymap("n", "<leader>po", "", {
                 noremap = true,
                 callback = function()
