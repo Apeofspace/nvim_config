@@ -85,5 +85,6 @@ require("lazy").setup({
         end
     },
     {'tpope/vim-fugitive'},
+    {'czheo/mojo.vim'},
 })
 
