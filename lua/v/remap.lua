@@ -21,6 +21,9 @@ vim.keymap.set({"n", "v"}, "<C-j>", "<C-w>J")
 vim.keymap.set({"n", "v"}, "<C-k>", "<C-w>K")
 vim.keymap.set({"n", "v"}, "<C-l>", "<C-w>L")
 
+-- make a split
+vim.keymap.set('n', '<leader>vs', ":vsplit<CR>")
+
 -- moving cwd to open files dir
 vim.keymap.set({"n", "v"}, "<leader>cd", ":cd %:h <CR>")
 
