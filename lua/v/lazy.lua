@@ -84,7 +84,11 @@ require("lazy").setup({
             })
         end
     },
-    {'tpope/vim-fugitive'},
+    {'tpope/vim-fugitive',
+        config = function()
+            vim.cmd([[set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P]])
+        end,
+    },
     {'czheo/mojo.vim'},
 })
 
