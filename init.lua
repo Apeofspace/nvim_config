@@ -159,8 +159,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -533,9 +533,44 @@ require('lazy').setup {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
-        gopls = {},
+        clangd = {
+          cmd = {
+            'clangd',
+            '--query-driver=/usr/bin/arm-none-eabi-gcc',
+            -- '--query-driver=arm-none-eabi-gcc',
+          },
+        },
+        -- pylsp = {
+        --   settings = {
+        --     pylsp = {
+        --       plugins = {
+        --         pycodestyle = {
+        --           ignore = { 'W391' },
+        --           maxLineLength = 100,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
         pyright = {},
+        -- pyright = {
+        --   -- capabilities = capabilities,
+        --   -- on_attach = on_attach,
+        --   settings = {
+        --     pyright = { autoImportCompletions = true },
+        --     -- pythonPath = 'python3',
+        --     python = {
+        --       pythonPath = 'python3',
+        --       analysis = {
+        --         autoSearchPaths = true,
+        --         diagnosticMode = 'openFilesOnly',
+        --         useLibraryCodeForTypes = true,
+        --         typeCheckingMode = 'off',
+        --       },
+        --     },
+        --   },
+        -- },
+        gopls = {},
         marksman = {},
         cmake = {},
         -- rust_analyzer = {},
@@ -592,6 +627,7 @@ require('lazy').setup {
         'clangd',
         'cmake',
         'pyright',
+        -- 'pylsp',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -604,14 +640,6 @@ require('lazy').setup {
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
-          end,
-          clangd = function()
-            require('lspconfig').clangd.setup {
-              cmd = {
-                'clangd',
-                '--query-driver=arm-none-eabi-gcc',
-              },
-            }
           end,
         },
       }

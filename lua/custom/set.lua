@@ -3,6 +3,10 @@ vim.opt.colorcolumn = '80'
 vim.opt.wrap = false
 vim.opt.termguicolors = true
 
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open Netrw' })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -31,7 +35,5 @@ vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Make a Vertical Split
 -- moving cwd to open files dir
 vim.keymap.set({ 'n', 'v' }, '<leader>cd', ':cd %:h <CR>')
 
--- vim.keymap.set({"n", "v"}, "<leader>fc", ":let @/ = \"\"<CR>")
--- vim.keymap.set({"n", "v"}, "<leader>ft", function()
---         if not vim.o.hlsearch then vim.o.hlsearch = true else vim.o.hlsearch = false end
---     end)
+-- remap q to nothing (fuck macros)
+vim.keymap.set({ 'n', 'v' }, 'q', '<nop>')
