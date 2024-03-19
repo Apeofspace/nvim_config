@@ -3,6 +3,13 @@ vim.opt.colorcolumn = '80'
 vim.opt.wrap = false
 vim.opt.termguicolors = true
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'r', 'o' }
+  end,
+})
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

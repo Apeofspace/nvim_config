@@ -234,7 +234,12 @@ require('lazy').setup {
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      ignore = '^$', -- ignore empty lines
+    },
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following lua:
@@ -540,36 +545,7 @@ require('lazy').setup {
             -- '--query-driver=arm-none-eabi-gcc',
           },
         },
-        -- pylsp = {
-        --   settings = {
-        --     pylsp = {
-        --       plugins = {
-        --         pycodestyle = {
-        --           ignore = { 'W391' },
-        --           maxLineLength = 100,
-        --         },
-        --       },
-        --     },
-        --   },
-        -- },
         pyright = {},
-        -- pyright = {
-        --   -- capabilities = capabilities,
-        --   -- on_attach = on_attach,
-        --   settings = {
-        --     pyright = { autoImportCompletions = true },
-        --     -- pythonPath = 'python3',
-        --     python = {
-        --       pythonPath = 'python3',
-        --       analysis = {
-        --         autoSearchPaths = true,
-        --         diagnosticMode = 'openFilesOnly',
-        --         useLibraryCodeForTypes = true,
-        --         typeCheckingMode = 'off',
-        --       },
-        --     },
-        --   },
-        -- },
         gopls = {},
         marksman = {},
         cmake = {},
@@ -627,7 +603,6 @@ require('lazy').setup {
         'clangd',
         'cmake',
         'pyright',
-        -- 'pylsp',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -42,7 +42,7 @@ return {
     -- REQUIRED
     harpoon:setup()
     -- REQUIRED
-    vim.keymap.set('n', '<leader>ha', function()
+    vim.keymap.set('n', '<leader>a', function()
       harpoon:list():append()
     end)
     -- vim.keymap.set('n', '<leader>hd', harpoon.mark.rm_file)
