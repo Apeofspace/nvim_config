@@ -43,3 +43,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>cd', ':cd %:h <CR>')
 
 -- remap q to nothing (fuck macros)
 vim.keymap.set({ 'n', 'v' }, 'q', '<nop>')
+
+-- use JQ to format json file
+vim.keymap.set({ 'n' }, '<leader>gj', [[:%!jq '.'<CR>]], { desc = 'Format file with jq' })
+vim.keymap.set({ 'v' }, '<leader>gj', [[:'<,'>!jq '.'<CR>]], { desc = 'Format selection with jq' })
