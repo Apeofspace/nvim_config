@@ -382,6 +382,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
         vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
         vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Find exi[S]ting [B]uffers' })
+        vim.keymap.set('n', '<leader><leader>', function()
+          builtin.grep_string { shorten_path = true, word_match = '-w', only_sort_text = true, search = '' }
+        end, { desc = 'Fuzzy search all files' })
 
         -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set('n', '<leader>/', function()
