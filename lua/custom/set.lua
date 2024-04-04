@@ -19,16 +19,16 @@ vim.keymap.set('n', '<leader>ov', vim.cmd.Ex, { desc = 'Open Netrw' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 
--- paste by default doesnt copy to buffer
-vim.keymap.set({ 'v' }, 'p', [["_dp]], { noremap = true })
-vim.keymap.set({ 'v' }, 'P', [["_dP]], { noremap = true })
+-- paste by default doesnt copy to buffer (p and P are flipped for visual mode)
+vim.keymap.set({ 'v' }, 'p', [["_dP]], { noremap = true })
+vim.keymap.set({ 'v' }, 'P', [["_dp]], { noremap = true })
 
 -- vim.keymap.set('v', '<leader>pp', [["_dp]], { noremap = true, desc = 'Replace with buffer' })
 vim.keymap.set('n', '<leader>pp', [[viw"_dP]], { noremap = true, desc = 'Replace word under cursor with buffer' })
 
-vim.keymap.set('v', '<leader>po', [["+p]], { noremap = true, desc = 'Paste from system buffer' })
+vim.keymap.set('v', '<leader>po', [["+P]], { noremap = true, desc = 'Paste from system buffer' })
 vim.keymap.set('n', '<leader>po', [[viw"_d+P]], { noremap = true, desc = 'Replace word under cursor with system buffer' })
-vim.keymap.set('v', '<leader>Po', [["+P]], { noremap = true, desc = 'Paste from system buffer' })
+vim.keymap.set('v', '<leader>Po', [["+p]], { noremap = true, desc = 'Paste from system buffer' })
 
 -- yank to system buffer
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { noremap = true })
@@ -54,3 +54,7 @@ vim.keymap.set({ 'n', 'v' }, 'q', '<nop>', { desc = 'fucking nothing' })
 -- use JQ to format json file
 vim.keymap.set({ 'n' }, '<leader>gj', [[:%!jq '.'<CR>]], { desc = 'Format file with jq' })
 vim.keymap.set({ 'v' }, '<leader>gj', [[:'<,'>!jq '.'<CR>]], { desc = 'Format selection with jq' })
+
+-- center of screen on halfpage movements
+vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz', { noremap = true })

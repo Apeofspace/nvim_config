@@ -378,7 +378,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
         vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
         vim.keymap.set('n', '<leader>sc', builtin.grep_string, { desc = '[S]earch [C]urrent Word' })
         vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-        vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+        vim.keymap.set('n', '<leader>se', builtin.diagnostics, { desc = '[S]earch [E]rrors' })
         vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
         vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Find exi[S]ting [B]uffers' })
@@ -485,7 +485,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
             -- Fuzzy find all the symbols in your current document.
             --  Symbols are things like variables, functions, types, etc.
-            map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+            map('<leader>sd', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
             -- Fuzzy find all the symbols in your current workspace
             --  Similar to document symbols, except searches over your whole project.
