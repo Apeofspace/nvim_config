@@ -639,18 +639,18 @@ P.S. You can delete this when you're done too. It's your config now! :)
           lua = { 'stylua' },
           -- Conform can also run multiple formatters sequentially
           python = { 'isort', 'black' },
-          -- json = { { 'fixjson', 'deno_fmt', 'prettierd' } },
           javascript = { { 'prettierd', 'prettier' } },
           typescript = { { 'prettierd', 'prettier' } },
           json = { { 'prettierd', 'prettier' } },
           jsonc = { { 'prettierd', 'prettier' } },
           -- You can use a sub-list to tell conform to run *until* a formatter
           -- is found.
-          -- javascript = { { "prettierd", "prettier" } },
+          c = { { 'uncrustify', 'astyle' } },
         },
       },
     },
-
+    -- automatically download conform formatters with mason
+    { 'zapling/mason-conform.nvim', opts = {} },
     { -- Autocompletion
       'hrsh7th/nvim-cmp',
       event = 'InsertEnter',
@@ -680,7 +680,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
         --    you can use this plugin to help you. It even has snippets
         --    for various frameworks/libraries/etc. but you will have to
         --    set up the ones that are useful for you.
-        -- 'rafamadriz/friendly-snippets',
+        'rafamadriz/friendly-snippets',
       },
       config = function()
         -- See `:help cmp`
