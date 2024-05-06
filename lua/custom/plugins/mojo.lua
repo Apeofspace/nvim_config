@@ -1,4 +1,4 @@
 return {
   'czheo/mojo.vim',
-  lazy = true,
+  -- lazy = true,
 }

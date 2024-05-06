@@ -548,8 +548,17 @@ P.S. You can delete this when you're done too. It's your config now! :)
             cmd = {
               'clangd',
               '--query-driver=/usr/bin/arm-none-eabi-gcc',
-              -- '--query-driver=arm-none-eabi-gcc',
+              '--clang-tidy',
+              '--background-index',
+              '--header-insertion=iwyu',
+              '--completion-style=detailed',
+              -- '--function-arg-placeholders',
+              -- '-j4',
+              '--fallback-style=llvm',
+              -- '--enable-config',
+              -- "-style='{ColumnLimit: 150, }'",
             },
+            single_file_support = true,
           },
           pyright = {},
           gopls = {},
@@ -633,6 +642,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
         notify_on_error = false,
         format_on_save = {
           timeout_ms = 1000,
+          -- lsp_fallback = false,
           lsp_fallback = true,
         },
         formatters_by_ft = {
@@ -643,9 +653,18 @@ P.S. You can delete this when you're done too. It's your config now! :)
           typescript = { { 'prettierd', 'prettier' } },
           json = { { 'prettierd', 'prettier' } },
           jsonc = { { 'prettierd', 'prettier' } },
-          -- You can use a sub-list to tell conform to run *until* a formatter
-          -- is found.
-          c = { { 'uncrustify', 'astyle' } },
+          -- You can use a sub-list to tell conform to run *until* a formatter is found.
+          c = { { 'astyle', 'uncrustify' } },
+        },
+        formatters = {
+          black = {
+            prepend_args = { '--line-length 120' },
+            -- check https://pypi.org/project/black/
+          },
+          astyle = {
+            prepend_args = { '--style=google', '--indent=spaces=2 ', '--max-code-length=120' },
+            -- check https://astyle.sourceforge.net/astyle.html#_Brace_Style_Options
+          },
         },
       },
     },

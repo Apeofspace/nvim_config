@@ -44,7 +44,8 @@ vim.keymap.set({ 'n', 'v' }, '<C-H>', '<C-w>H', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<C-J>', '<C-w>J', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<C-K>', '<C-w>K', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<C-L>', '<C-w>L', { noremap = true })
-vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Make a Vertical Split' })
+-- redundant use <C-w>v
+-- vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Make a Vertical Split' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>cd', ':cd %:h <CR>', { desc = "Move cwd to open file's dir" })
 
