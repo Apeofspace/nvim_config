@@ -560,10 +560,22 @@ P.S. You can delete this when you're done too. It's your config now! :)
             },
             single_file_support = true,
           },
-          pyright = {},
           gopls = {},
           marksman = {},
           cmake = {},
+          pylsp = {
+            plugins = {
+              pydocdestyle = {
+                enabled = true, -- i have no idea if that works
+                maxLineLength = 120,
+                ignore = { 'E501' },
+              },
+              pylsp_mypy = {
+                enabled = true, -- i have no idea if that works
+                report_progress = true,
+              },
+            },
+          },
           -- rust_analyzer = {},
           -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
           --
@@ -617,7 +629,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
           'stylua', -- Used to format lua code
           'clangd',
           'cmake',
-          'pyright',
+          'pylsp',
+          'mypy',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -642,7 +655,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
         notify_on_error = false,
         format_on_save = {
           timeout_ms = 1000,
-          -- lsp_fallback = false,
           lsp_fallback = true,
         },
         formatters_by_ft = {
@@ -655,6 +667,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
           jsonc = { { 'prettierd', 'prettier' } },
           -- You can use a sub-list to tell conform to run *until* a formatter is found.
           c = { { 'astyle', 'uncrustify' } },
+          cpp = { { 'astyle', 'uncrustify' } },
         },
         formatters = {
           black = {
@@ -835,8 +848,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
     --  Here are some example plugins that I've included in the kickstart repository.
     --  Uncomment any of the lines below to enable them (you will need to restart nvim).
     --
-    -- require 'kickstart.plugins.debug',
-    -- require 'kickstart.plugins.indent_line',
+    require 'kickstart.plugins.debug',
+    require 'kickstart.plugins.indent_line',
 
     -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
     --    This is the easiest way to modularize your config.
@@ -847,5 +860,5 @@ P.S. You can delete this when you're done too. It's your config now! :)
   }
 
   -- The line beneath this is called `modeline`. See `:help modeline`
-  -- vim: ts=2 sts=2 sw=2 et
+  -- -vim: ts=2 sts=2 sw=2 et
 end
