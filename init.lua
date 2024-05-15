@@ -564,15 +564,23 @@ P.S. You can delete this when you're done too. It's your config now! :)
           marksman = {},
           cmake = {},
           pylsp = {
-            plugins = {
-              pydocdestyle = {
-                enabled = true, -- i have no idea if that works
-                maxLineLength = 120,
-                ignore = { 'E501' },
-              },
-              pylsp_mypy = {
-                enabled = true, -- i have no idea if that works
-                report_progress = true,
+            settings = {
+              pylsp = {
+                plugins = {
+                  jedi_completion = {
+                    include_params = true,
+                  },
+                  pylint = { args = { '--ignore=E501,E231', '-' }, enabled = true, debounce = 200 },
+                  pycodestyle = {
+                    enabled = true,
+                    ignore = { 'E501', 'E231' },
+                    maxLineLength = 120,
+                  },
+                  pylsp_mypy = {
+                    enabled = true, -- i have no idea if that works
+                    report_progress = true,
+                  },
+                },
               },
             },
           },
@@ -627,11 +635,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
           'stylua', -- Used to format lua code
-          'clangd',
-          'cmake',
-          'pylsp',
-          'mypy',
         })
+
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
         require('mason-lspconfig').setup {
