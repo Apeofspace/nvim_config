@@ -568,16 +568,24 @@ P.S. You can delete this when you're done too. It's your config now! :)
               pylsp = {
                 plugins = {
                   jedi_completion = {
+                    enabled = true,
                     include_params = true,
                   },
-                  pylint = { args = { '--ignore=E501,E231', '-' }, enabled = true, debounce = 200 },
+                  pylint = {
+                    enabled = true,
+                    debounce = 200,
+                    args = {
+                      '--ignore=E501,E231',
+                      '-',
+                    },
+                  },
                   pycodestyle = {
                     enabled = true,
                     ignore = { 'E501', 'E231' },
                     maxLineLength = 120,
                   },
                   pylsp_mypy = {
-                    enabled = true, -- i have no idea if that works
+                    enabled = false,
                     report_progress = true,
                   },
                 },
@@ -676,7 +684,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
         },
         formatters = {
           black = {
-            prepend_args = { '--line-length 120' },
+            prepend_args = { '--line-length=125' },
             -- check https://pypi.org/project/black/
           },
           astyle = {
@@ -729,6 +737,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
           snippet = {
             expand = function(args)
               luasnip.lsp_expand(args.body)
+              -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
             end,
           },
           completion = { completeopt = 'menu,menuone,noinsert' },
