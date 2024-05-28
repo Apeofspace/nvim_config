@@ -21,10 +21,13 @@ return {
     -- Add your own debuggers here
     -- 'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
+    'theHamsta/nvim-dap-virtual-text',
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+
+    require('nvim-dap-virtual-text').setup()
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -43,7 +46,7 @@ return {
         -- 'delve',
         'codelldb',
         'debugpy',
-        'cortex-debug',
+        -- 'cortex-debug',
         'cpptools',
       },
     }

@@ -1,9 +1,38 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
+vim.opt.showmode = false
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.breakindent = true
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.signcolumn = 'yes'
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+vim.opt.cursorline = true
+vim.opt.scrolloff = 40
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.opt.colorcolumn = '80'
 vim.opt.wrap = false
 vim.opt.termguicolors = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.lsp.inlay_hint.enable()
 
 -- don't continue comment when hitting newline
 vim.api.nvim_create_autocmd('FileType', {
@@ -51,6 +80,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>cd', ':cd %:h <CR>', { desc = "Move cwd to
 
 -- remap q to nothing (fuck macros)
 vim.keymap.set({ 'n', 'v' }, 'q', '<nop>', { desc = 'fucking nothing' })
+-- remap ctrl-u to nothing (to avoid undoing while trying to yank or paste)
+vim.keymap.set({ 'n', 'v', 'i' }, '<C-u>', '<nop>', { desc = 'fucking nothing' })
 
 -- use JQ to format json file
 vim.keymap.set({ 'n' }, '<leader>gj', [[:%!jq '.'<CR>]], { desc = 'Format file with jq' })
