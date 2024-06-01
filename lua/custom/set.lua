@@ -70,14 +70,14 @@ vim.keymap.set({ 'v' }, 'P', [["_dp]], { noremap = true })
 -- vim.keymap.set('v', '<leader>pp', [["_dp]], { noremap = true, desc = 'Replace with buffer' })
 vim.keymap.set('n', '<leader>pp', [[viw"_dP]], { noremap = true, desc = 'Replace word under cursor with buffer' })
 
-vim.keymap.set('v', '<leader>po', [["+P]], { noremap = true, desc = 'Paste from system buffer' })
-vim.keymap.set('n', '<leader>po', [[viw"_d+P]], { noremap = true, desc = 'Replace word under cursor with system buffer' })
-vim.keymap.set('v', '<leader>Po', [["+p]], { noremap = true, desc = 'Paste from system buffer' })
+-- vim.keymap.set('v', '<leader>po', [["+P]], { noremap = true, desc = 'Paste from system buffer' })
+-- vim.keymap.set('n', '<leader>po', [[viw"_d+P]], { noremap = true, desc = 'Replace word under cursor with system buffer' })
+-- vim.keymap.set('v', '<leader>Po', [["+p]], { noremap = true, desc = 'Paste from system buffer' })
 
--- yank to system buffer
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { noremap = true })
-vim.keymap.set({ 'n', 'v' }, '<A-v>', [["+p]])
-vim.keymap.set({ 'n', 'v' }, '<A-p>', [["+p]])
+-- -- yank to system buffer
+-- vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { noremap = true })
+-- vim.keymap.set({ 'n', 'v' }, '<A-v>', [["+p]])
+-- vim.keymap.set({ 'n', 'v' }, '<A-p>', [["+p]])
 
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { noremap = true, desc = 'Delete to void' })
 
