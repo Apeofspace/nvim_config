@@ -59,9 +59,9 @@ vim.keymap.set('n', '<leader>gq', vim.diagnostic.setloclist, { desc = 'Open diag
 
 -- vim.keymap.set('n', '<leader>ov', vim.cmd.Ex, { desc = 'Open Netrw' })
 
--- move selected lines up/down
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
+-- move selected lines up/down (now handled by mini)
+-- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
+-- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- paste by default doesnt copy to buffer (p and P are flipped for visual mode)
 vim.keymap.set({ 'v' }, 'p', [["_dP]], { noremap = true })
