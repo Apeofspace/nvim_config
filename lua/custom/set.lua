@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('n', '<leader>ge', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>gq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
-vim.keymap.set('n', '<leader>ov', vim.cmd.Ex, { desc = 'Open Netrw' })
+-- vim.keymap.set('n', '<leader>ov', vim.cmd.Ex, { desc = 'Open Netrw' })
 
 -- move selected lines up/down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
