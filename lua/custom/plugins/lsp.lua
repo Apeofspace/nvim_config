@@ -62,6 +62,11 @@ return {
           --  For example, in C this would take you to the header
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          -- toggle inlay_hints
+          map('<leader>gh', function()
+            vim.lsp.inlay_hints.enable(0, not vim.lsp.inlay_hints.is_enabled())
+          end, 'Toggle Inlay [H]ints')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -180,6 +185,7 @@ return {
         -- },
         -- use ruff and jedi together or just pylsp honestly
         jedi_language_server = {},
+        -- pyright = {},
         -- pylyzer = {},
         ruff = {
           ignore = { 'E501', 'E231' },
