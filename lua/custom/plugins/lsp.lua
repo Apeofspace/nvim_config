@@ -64,7 +64,12 @@ return {
 
           -- toggle inlay_hints
           map('<leader>gh', function()
-            vim.lsp.inlay_hints.enable(0, not vim.lsp.inlay_hints.is_enabled())
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            if vim.lsp.inlay_hint.is_enabled() == true then
+              print 'Inlay hints enabled'
+            else
+              print 'Inlay hints disabled'
+            end
           end, 'Toggle Inlay [H]ints')
 
           -- The following two autocommands are used to highlight references of the
