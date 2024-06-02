@@ -11,13 +11,15 @@ return {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
+        -- python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
         javascript = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
         json = { { 'prettierd', 'prettier' } },
         jsonc = { { 'prettierd', 'prettier' } },
         -- You can use a sub-list to tell conform to run *until* a formatter is found.
-        c = { { 'astyle', 'uncrustify' } },
-        cpp = { { 'astyle', 'uncrustify' } },
+        c = { { 'astyle' } },
+        -- WARN: astyle needs to be installed manually
+        cpp = { { 'astyle' } },
       },
       formatters = {
         black = {

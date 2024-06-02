@@ -117,6 +117,7 @@ return {
         },
         marksman = {},
         cmake = {},
+        -- READ MORE ON PYTHON TOOLS https://inventwithpython.com/blog/2022/11/19/python-linter-comparison-2022-pylint-vs-pyflakes-vs-flake8-vs-autopep8-vs-bandit-vs-prospector-vs-pylama-vs-pyroma-vs-black-vs-mypy-vs-radon-vs-mccabe/
         pylsp = {
           -- install dependencies to make it work??
           -- pip install python-lsp-server flake8
@@ -129,27 +130,49 @@ return {
                   enabled = true,
                   include_params = true,
                 },
+                ruff = {
+                  enabled = false, -- doesnt work anyway
+                  ignore = { 'E501', 'E231' },
+                  formatEnabled = true,
+                  linelength = 120,
+                  format = { 'ALL' },
+                },
                 pylint = {
-                  enabled = true,
+                  -- error/style linter
+                  -- use this or pyflakes + pycodestyle
+                  -- said to be much slower than flake8
+                  enabled = false,
                   debounce = 200,
                   args = {
                     '--ignore=E501,E231',
                     '-',
                   },
                 },
+                flake8 = {
+                  -- includes mccabe, pycodestyle (pep8), pyflakes
+                  enabled = false,
+                },
+                mccabe = {
+                  -- complexity analyzer
+                  -- responsible for cyclomatic complexity warnings
+                  enabled = false,
+                },
+                -- i need those two below or pylint
+                pyflakes = {
+                  -- error linter (no style errors)
+                  enabled = true,
+                },
                 pycodestyle = {
+                  -- style linter only
                   enabled = true,
                   ignore = { 'E501', 'E231' },
                   maxLineLength = 120,
                 },
                 pylsp_mypy = {
-                  -- static types analyzer
+                  -- static types analyzer.
+                  -- Alternatives with similar functionality: pyright, pyre, pytype
                   enabled = false,
                   report_progress = true,
-                },
-                flake8 = {
-                  -- error checking
-                  enabled = true,
                 },
               },
             },
@@ -186,6 +209,7 @@ return {
       local ensure_installed = vim.tbl_keys(ensure_installed_servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
+        'ruff',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
