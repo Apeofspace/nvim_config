@@ -55,7 +55,7 @@ return {
           ['<C-p>'] = cmp.mapping.select_prev_item(),
 
           -- Accept ([y]es) the completion.
-          -- ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-y>'] = cmp.mapping.confirm { select = true },
           ['<TAB>'] = cmp.mapping.confirm { select = true },
 
           -- Manually trigger a completion from nvim-cmp.
