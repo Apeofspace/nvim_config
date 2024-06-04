@@ -14,7 +14,7 @@ local colorschemes = {
 local colorscheme_file = vim.fn.stdpath 'config' .. '/lua/custom/colorscheme.txt'
 local colorschemeindex = 1
 
-local function read_colorscheme()
+function read_colorscheme()
   local f = io.open(colorscheme_file, 'r')
   if f then
     local colorscheme = f:read '*n'
@@ -32,14 +32,18 @@ local function write_colorscheme(colorscheme)
   end
 end
 
+local function setColorscheme(index)
+  vim.cmd('colorscheme ' .. colorschemes[index])
+  vim.notify('Colorscheme: ' .. colorschemes[index])
+  write_colorscheme(index)
+end
+
 local function NextColorScheme()
   colorschemeindex = colorschemeindex + 1
   if colorschemeindex <= 0 or colorschemeindex > #colorschemes then
     colorschemeindex = 1
   end
-  vim.cmd('colorscheme ' .. colorschemes[colorschemeindex])
-  vim.notify('Colorscheme: ' .. colorschemes[colorschemeindex])
-  write_colorscheme(colorschemeindex)
+  setColorscheme(colorschemeindex)
 end
 
 local function PrevColorScheme()
@@ -47,26 +51,24 @@ local function PrevColorScheme()
   if colorschemeindex <= 0 or colorschemeindex > #colorschemes then
     colorschemeindex = #colorschemes
   end
-  vim.cmd('colorscheme ' .. colorschemes[colorschemeindex])
-  vim.notify('Colorscheme: ' .. colorschemes[colorschemeindex])
-  write_colorscheme(colorschemeindex)
+  setColorscheme(colorschemeindex)
 end
 
 vim.keymap.set('n', '<leader>cn', NextColorScheme, { desc = '[N]ext [C]olorscheme' })
 vim.keymap.set('n', '<leader>cp', PrevColorScheme, { desc = '[P]rev [C]olorscheme' })
 
--- Defer loading the colorscheme until VimEnter
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function()
-    local saved_index = read_colorscheme()
-    if saved_index and saved_index >= 1 and saved_index <= #colorschemes then
-      colorschemeindex = saved_index
-      vim.cmd('colorscheme ' .. colorschemes[colorschemeindex])
-    else
-      vim.cmd('colorscheme ' .. colorschemes[1])
-    end
-  end,
-})
+-- -- Defer loading the colorscheme until VimEnter
+-- vim.api.nvim_create_autocmd('vimEnter', {
+--   callback = function()
+--     local saved_index = read_colorscheme()
+--     if saved_index and saved_index >= 1 and saved_index <= #colorschemes then
+--       colorschemeindex = saved_index
+--     else
+--       colorschemeindex = 1
+--     end
+--     setColorscheme(colorschemeindex)
+--   end,
+-- })
 
 return {
   {
