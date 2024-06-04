@@ -194,7 +194,7 @@ return {
         -- pylyzer = {},
         ruff = {
           ignore = { 'E501', 'E231' },
-          formatEnabled = true,
+          formatEnabled = false,
           linelength = 120,
         },
         lua_ls = {
