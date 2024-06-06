@@ -17,6 +17,7 @@ return {
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+      -- can use ultimate-autopair fastwrap instead
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -42,7 +43,7 @@ return {
         autowrite = true,
       }
 
-      require('mini.pairs').setup()
+      -- require('mini.pairs').setup()
 
       -- TODO: check it out
       -- require('mini.diff').setup()
@@ -51,5 +52,18 @@ return {
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
+  },
+  {
+    {
+      -- :help ultimate-autopair
+      'altermo/ultimate-autopair.nvim',
+      -- Alt+e for fastwrap
+      opts = {
+        space = {
+          enable = false,
+          check_box_ft = { 'markdown', 'text' },
+        },
+      },
+    },
   },
 }

@@ -10,6 +10,9 @@ else
   end ---@diagnostic disable-next-line: undefined-field
   vim.opt.rtp:prepend(lazypath)
   require('lazy').setup {
+    -- change_detection = {
+    --   notify = false,
+    -- },
     import = 'custom.plugins',
   }
 

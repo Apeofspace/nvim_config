@@ -57,6 +57,9 @@ end
 vim.keymap.set('n', '<leader>cn', NextColorScheme, { desc = '[N]ext [C]olorscheme' })
 vim.keymap.set('n', '<leader>cp', PrevColorScheme, { desc = '[P]rev [C]olorscheme' })
 
+--WARN: when i used this autocmd, scope breaks for indentline plugin. which depends on treesitter.
+-- investigate. it might be that i need to load indeantline last. perhaps in after folder
+
 -- -- Defer loading the colorscheme until VimEnter
 -- vim.api.nvim_create_autocmd('vimEnter', {
 --   callback = function()
