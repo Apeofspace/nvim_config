@@ -10,9 +10,9 @@ vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.breakindent = true
 vim.opt.undofile = true
-if vim.fn.has("win32") then
+if vim.loop.os_uname().sysname == "Windows" then
 	vim.opt.undodir = os.getenv("HOMEPATH") .. "/.nvim/undodir"
-else
+elseif vim.loop.os_uname().sysname == "Linux" then
 	vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undodir"
 end
 vim.opt.ignorecase = true
