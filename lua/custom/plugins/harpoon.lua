@@ -122,7 +122,7 @@ return {
 		harpoon:setup()
 		-- REQUIRED
 		vim.keymap.set("n", "<leader>a", function()
-			harpoon:list():append()
+			harpoon:list():add()
 		end, { desc = "Harpoon add" })
 		vim.keymap.set("n", "<leader>h", function()
 			harpoon.ui:toggle_quick_menu(require("harpoon"):list())
