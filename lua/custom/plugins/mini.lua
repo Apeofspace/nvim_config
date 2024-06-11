@@ -33,6 +33,14 @@ return {
 				return "%2l:%-2v"
 			end
 
+			local function gethomedir()
+				print(vim.loop.os_uname().sysname)
+				if vim.loop.os_uname().sysname == "Windows" or "Windows_NT" then
+					return os.getenv("HOMEPATH")
+				elseif vim.loop.os_uname().sysname == "Linux" then
+					return os.getenv("HOME")
+				end
+			end
 			-- Works using :mksession (meaning sessionoptions is fully respected).
 			-- Implements both global (from configured directory) and local (from current directory) sessions.
 			-- Autoread default session (local if detected, latest otherwise) if Neovim was called without intention to show something else.
@@ -41,7 +49,8 @@ return {
 			require("mini.sessions").setup({
 				autoread = true,
 				autowrite = true,
-				directory = os.getenv("HOME") .. "/.nvim/minisesh",
+				-- directory = os.getenv("HOME") .. "/.nvim/minisesh",
+				directory = gethomedir() .. "/.nvim/minisesh",
 			})
 
 			-- require('mini.pairs').setup()
