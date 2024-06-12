@@ -34,7 +34,6 @@ return {
 			end
 
 			local function gethomedir()
-				print(vim.loop.os_uname().sysname)
 				if vim.loop.os_uname().sysname == "Windows" or "Windows_NT" then
 					return os.getenv("HOMEPATH")
 				elseif vim.loop.os_uname().sysname == "Linux" then
