@@ -1,13 +1,15 @@
 local colorschemes = {
 	"sonokai",
 	"monokai-pro",
+	"kanagawa",
+	"rose-pine",
+	"nordic",
 	"tokyonight-night",
 	"eldritch",
-	"cyberdream",
 	"catppuccin",
 	"melange",
-	"monet",
 	"hybrid",
+	"everforest",
 }
 
 -- Path to the file where the colorscheme will be saved
@@ -100,17 +102,9 @@ return {
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- vim.cmd.colorscheme 'eldritch'
-		end,
-	},
-	{
-		"scottmckendry/cyberdream.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("cyberdream").setup({
-				italic_comments = true,
+			require("eldritch").setup({
+				transparent = false,
 			})
-			-- vim.cmd.colorscheme 'cyberdream'
 		end,
 	},
 	{
@@ -145,26 +139,6 @@ return {
 		end,
 	},
 	{
-		"fynnfluegge/monet.nvim",
-		name = "monet",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("monet").setup({
-				transparent_background = false,
-				semantic_tokens = true,
-				dark_mode = true,
-				highlight_overrides = {},
-				color_overrides = {},
-				styles = {
-					strings = { "italic" },
-					comments = { "italic" },
-				},
-			})
-			-- vim.cmd.colorscheme 'monet'
-		end,
-	},
-	{
 		"HoNamDuong/hybrid.nvim",
 		lazy = false,
 		priority = 1000,
@@ -179,5 +153,42 @@ return {
 			})
 			-- vim.cmd.colorscheme 'hybrid'
 		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("kanagawa").setup({
+				commentStyle = { italic = true },
+				functionStyle = {},
+				keywordStyle = { italic = true },
+				statementStyle = { bold = true },
+				typeStyle = {},
+				transparent = true,
+				theme = "wave", -- Load "wave" theme when 'background' option is not set
+				background = { -- map the value of 'background' option to a theme
+					dark = "wave", -- try "dragon" !
+					light = "lotus",
+				},
+			})
+		end,
+	},
+	{ "rose-pine/neovim", name = "rose-pine", lazy = false, priority = 1000 },
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
+		end,
+	},
+	{
+		"sainnhe/everforest",
+		lazy = false,
+		priority = 1000,
+		-- config = function()
+		-- 	require("everforest").setup()
+		-- end,
 	},
 }
