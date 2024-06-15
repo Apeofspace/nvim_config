@@ -52,10 +52,24 @@ return {
 				directory = gethomedir() .. "/.nvim/minisesh",
 			})
 
+			-- ultimate.autopair works better
 			-- require('mini.pairs').setup()
 
-			-- TODO: check it out
-			-- require('mini.diff').setup()
+			require("mini.diff").setup({
+				view = {
+					style = "sign",
+					signs = {
+						add = "+",
+						change = "~",
+						delete = "_",
+						topdelete = "‾",
+						changedelete = "~",
+					},
+				},
+			})
+			vim.keymap.set("n", "<leader>go", function()
+				vim.cmd("lua MiniDiff.toggle_overlay()")
+			end)
 
 			require("mini.move").setup()
 			-- ... and there is more!
